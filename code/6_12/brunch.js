@@ -13,11 +13,15 @@ const puppeteer = require('puppeteer');
   await page.click("input.txt_search");
   await page.keyboard.type('it');
   await page.keyboard.press("Enter");
-  // os 가 다를 경우 access안됨
-  
   await page.waitForNavigation();
 
-  await page.evaluate(() => {
-      console.log("dho dkseho tlqkf ");
-  });
+  let infiniteScrollInterval = setInterval(async()=> {
+    await page.evaluate(() => {
+        window.scrollBy(0, window.innerHeight);
+      });
+  }, 1000);
+  setTimeout(()=>{
+    clearInterval(infiniteScrollInterval);
+  },10000)
+  
 })();
