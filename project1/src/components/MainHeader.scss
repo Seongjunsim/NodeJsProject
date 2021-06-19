@@ -1,0 +1,10 @@
+//scss 중요 꼭 공부할 것
+
+h1 {
+    &.red{
+        color: red;
+    }
+    &.green{
+        color: green;
+    }
+}
