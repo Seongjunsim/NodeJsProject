@@ -1,7 +1,7 @@
 import './App.css';
 import CustomList from './components/CustomList';
 import MainHeader from './components/MainHeader';
-
+import {useState} from "react";
 
 //state, props 
 // props -> 부모 요소에서 관리 -> 수동적 : 부모에서 적어준 데이터에 의존 
@@ -20,12 +20,23 @@ function App() {
   //   </div>
   // );
 
+
+  const [text, setText] = useState("hide");
+  const buttonClick = () => {
+    text === "hide" ? setText("see") : setText("hide");
+  }
+
+  const conditionRendering = text === "see" 
+  ? <MainHeader text="see"></MainHeader>
+  : <MainHeader text="hi"></MainHeader>;
   return (
     <div className="App">
       <h1>rkwmdi</h1>
-      <MainHeader text="hi"></MainHeader>
+      { conditionRendering }
+      <button onClick={buttonClick}>{text}</button>
     </div>
   );
 }
 
+// && -> if(text==='aa') return (<div> fds </div>)
 export default App;
